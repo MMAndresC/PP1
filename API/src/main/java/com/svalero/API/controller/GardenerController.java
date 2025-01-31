@@ -2,6 +2,7 @@ package com.svalero.API.controller;
 
 import com.svalero.API.domain.Gardener;
 import com.svalero.API.domain.dto.GardenerDto;
+import com.svalero.API.exceptions.GardenerNotFoundException;
 import com.svalero.API.service.GardenerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class GardenerController {
     }
 
     @GetMapping("/gardeners/{id}")
-    public ResponseEntity<Gardener> getGardener(@PathVariable long id){
+    public ResponseEntity<Gardener> getGardener(@PathVariable long id) throws GardenerNotFoundException {
         Gardener gardener = this.gardenerService.getById(id);
         logger.info("Get gardener");
         return new ResponseEntity<>(gardener, HttpStatus.FOUND);
@@ -38,14 +39,14 @@ public class GardenerController {
     }
 
     @PutMapping("/gardeners/{id}")
-    public ResponseEntity<Gardener> addGardener(@PathVariable long id, @RequestBody GardenerDto newGardener){
+    public ResponseEntity<Gardener> addGardener(@PathVariable long id, @RequestBody GardenerDto newGardener) throws GardenerNotFoundException {
         Gardener gardener = this.gardenerService.modify(id, newGardener);
         logger.info("Modified gardener");
         return new ResponseEntity<>(gardener, HttpStatus.OK);
     }
 
     @DeleteMapping("/gardeners/{id}")
-    public ResponseEntity<Integer> removeGardener(@PathVariable long id){
+    public ResponseEntity<Integer> removeGardener(@PathVariable long id) throws GardenerNotFoundException {
         this.gardenerService.remove(id);
         logger.info("Removed gardener");
         return new ResponseEntity<>(1, HttpStatus.OK);

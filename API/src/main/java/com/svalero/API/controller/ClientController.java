@@ -47,7 +47,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/clients/{id}")
-    public ResponseEntity<Integer> removeClient(@PathVariable long id){
+    public ResponseEntity<Integer> removeClient(@PathVariable long id) throws ClientNotFoundException {
         this.clientService.remove(id);
         logger.info("Removed client");
         return new ResponseEntity<>(1, HttpStatus.OK);

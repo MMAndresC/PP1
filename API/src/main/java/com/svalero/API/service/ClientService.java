@@ -22,7 +22,10 @@ public class ClientService {
     }
 
     public Client getById(long id) throws ClientNotFoundException {
-        return this.clientRepository.findById(id); //.orElseThrow(ClientNotFoundException::new);
+        Client client = this.clientRepository.findById(id);
+        if(client == null)
+            throw new ClientNotFoundException("Client with ID " + id + " not found");
+        return this.clientRepository.findById(id);
     }
 
     public Client add(ClientDto newClient) {
@@ -30,14 +33,18 @@ public class ClientService {
         return this.clientRepository.save(client);
     }
 
-    public int remove(long id){
-        //this.clientRepository.findById(id);
+    public int remove(long id) throws ClientNotFoundException {
+        Client client = this.clientRepository.findById(id);
+        if(client == null)
+            throw new ClientNotFoundException("Client with ID " + id + " not found");
         this.clientRepository.deleteById(id);
         return 1;
     }
 
-    public Client modify(long id, ClientDto updatedClient){
+    public Client modify(long id, ClientDto updatedClient) throws ClientNotFoundException {
         Client client = this.clientRepository.findById(id);
+        if(client == null)
+            throw new ClientNotFoundException("Client with ID " + id + " not found");
         modelMapper.map(updatedClient, client);
         return this.clientRepository.save(client);
     }
