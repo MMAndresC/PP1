@@ -11,6 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gardeners"
-        tools:targetApi="31" />
+        tools:targetApi="31">
+
+        <activity
+            android:name=".RegisterClientView"
+            android:exported="false" />
+        <activity
+            android:name=".MapActivityView"
+            android:exported="false" />
+        <activity
+            android:name=".DetailActivityView"
+            android:exported="false" />
+        <activity
+            android:name=".ClientListView"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>
