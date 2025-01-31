@@ -1,0 +1,14 @@
+package com.svalero.API.repository;
+
+import com.svalero.API.domain.Client;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface ClientRepository extends CrudRepository<Client, Long> {
+
+    List<Client> findAll();
+    Client findByName(String name);
+}
