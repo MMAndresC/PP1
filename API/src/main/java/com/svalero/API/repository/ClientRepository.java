@@ -10,5 +10,5 @@ import java.util.List;
 public interface ClientRepository extends CrudRepository<Client, Long> {
 
     List<Client> findAll();
-    Client findByName(String name);
+    Client findById(long id);
 }

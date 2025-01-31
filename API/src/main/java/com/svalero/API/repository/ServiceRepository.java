@@ -1,10 +1,11 @@
 package com.svalero.API.repository;
 
 import com.svalero.API.domain.Service;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ServiceRepository {
+public interface ServiceRepository extends CrudRepository<Service, Long> {
     List<Service> findAll();
-    Service findByName(String name);
+    Service findById(long id);
 }
