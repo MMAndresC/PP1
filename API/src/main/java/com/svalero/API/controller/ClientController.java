@@ -26,7 +26,7 @@ public class ClientController {
 
     @GetMapping("/clients/{id}")
     public ResponseEntity<Client> getClient(@PathVariable long id){
-        Client client = this.clientService.geById(id);
+        Client client = this.clientService.getById(id);
         logger.info("Get client");
         return new ResponseEntity<>(client, HttpStatus.FOUND);
     }

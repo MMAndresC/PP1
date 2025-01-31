@@ -20,7 +20,7 @@ public class ClientService {
         return this.clientRepository.findAll();
     }
 
-    public Client geById(long id){
+    public Client getById(long id){
         return this.clientRepository.findById(id);
     }
 
