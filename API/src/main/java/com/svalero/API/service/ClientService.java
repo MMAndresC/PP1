@@ -2,6 +2,7 @@ package com.svalero.API.service;
 
 import com.svalero.API.domain.Client;
 import com.svalero.API.domain.dto.ClientDto;
+import com.svalero.API.exceptions.ClientNotFoundException;
 import com.svalero.API.repository.ClientRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class ClientService {
         return this.clientRepository.findAll();
     }
 
-    public Client getById(long id){
-        return this.clientRepository.findById(id);
+    public Client getById(long id) throws ClientNotFoundException {
+        return this.clientRepository.findById(id); //.orElseThrow(ClientNotFoundException::new);
     }
 
     public Client add(ClientDto newClient) {

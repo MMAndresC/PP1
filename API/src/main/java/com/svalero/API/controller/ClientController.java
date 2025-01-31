@@ -2,6 +2,7 @@ package com.svalero.API.controller;
 
 import com.svalero.API.domain.Client;
 import com.svalero.API.domain.dto.ClientDto;
+import com.svalero.API.exceptions.ClientNotFoundException;
 import com.svalero.API.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +26,7 @@ public class ClientController {
     }
 
     @GetMapping("/clients/{id}")
-    public ResponseEntity<Client> getClient(@PathVariable long id){
+    public ResponseEntity<Client> getClient(@PathVariable long id) throws ClientNotFoundException {
         Client client = this.clientService.getById(id);
         logger.info("Get client");
         return new ResponseEntity<>(client, HttpStatus.FOUND);
@@ -39,7 +40,7 @@ public class ClientController {
     }
 
     @PutMapping("/clients/{id}")
-    public ResponseEntity<Client> addClient(@PathVariable long id, @RequestBody ClientDto newClient){
+    public ResponseEntity<Client> addClient(@PathVariable long id, @RequestBody ClientDto newClient) throws ClientNotFoundException{
         Client client = this.clientService.modify(id, newClient);
         logger.info("Modified client");
         return new ResponseEntity<>(client, HttpStatus.OK);
