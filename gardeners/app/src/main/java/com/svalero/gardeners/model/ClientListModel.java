@@ -5,6 +5,7 @@ import com.svalero.gardeners.api.ClientsApiInterface;
 import com.svalero.gardeners.contract.ClientListContract;
 import com.svalero.gardeners.domain.Client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -16,11 +17,11 @@ public class ClientListModel implements ClientListContract.Model {
     @Override
     public void loadClients (OnLoadClientsListener listener) {
         ClientsApiInterface clientsApi = ClientsApi.buildInstance();
-        Call<List<Client>> getClientsCall = clientsApi.getClients();
+        Call<ArrayList<Client>> getClientsCall = clientsApi.getClients();
         getClientsCall.enqueue(new Callback<>() {
 
             @Override
-            public void onResponse(Call<List<Client>> call, Response<List<Client>> response) {
+            public void onResponse(Call<ArrayList<Client>> call, Response<ArrayList<Client>> response) {
                 if (response.code() == 200) {
                     listener.onLoadClientsSuccess(response.body());
                 } else if (response.code() == 500) {
@@ -31,7 +32,7 @@ public class ClientListModel implements ClientListContract.Model {
             }
 
             @Override
-            public void onFailure(Call<List<Client>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Client>> call, Throwable t) {
                 listener.onLoadClientsError("Could not connect to the data source.  Please check the connection and try again.");
             }
         });

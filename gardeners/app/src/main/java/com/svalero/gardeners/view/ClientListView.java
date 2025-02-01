@@ -26,7 +26,7 @@ public class ClientListView extends AppCompatActivity implements ClientListContr
     private ClientAdapter clientAdapter;
     private ArrayList<Client> clientList;
     private ClientListContract.Presenter presenter;
-
+    private RecyclerView clientsView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +36,13 @@ public class ClientListView extends AppCompatActivity implements ClientListContr
 
         clientList = new ArrayList<>();
 
-        RecyclerView clientsView = findViewById(R.id.clients_view);
+        clientsView = findViewById(R.id.clients_view);
         clientsView.hasFixedSize();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         clientsView.setLayoutManager(linearLayoutManager);
 
-        clientAdapter = new ClientAdapter(clientList);
-        clientsView.setAdapter(clientAdapter);
+        //clientAdapter = new ClientAdapter(clientList);
+        //clientsView.setAdapter(clientAdapter);
     }
 
     @Override
@@ -77,9 +77,13 @@ public class ClientListView extends AppCompatActivity implements ClientListContr
     }
 
     @Override
-    public void listClients(List<Client> clientList) {
-        this.clientList.addAll(clientList);
-        clientAdapter.notifyDataSetChanged();
+    public void listClients(ArrayList<Client> clientList) {
+        //this.clientList.addAll(clientList);
+        this.clientList = clientList;
+        // El adaptador tiene que recibir la nueva lista
+        clientAdapter = new ClientAdapter(clientList);
+        clientsView.setAdapter(clientAdapter);
+        //clientAdapter.notifyDataSetChanged();
 
     }
 

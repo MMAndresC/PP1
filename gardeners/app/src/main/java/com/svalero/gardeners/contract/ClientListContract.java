@@ -2,6 +2,7 @@ package com.svalero.gardeners.contract;
 
 import com.svalero.gardeners.domain.Client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ClientListContract {
@@ -10,14 +11,14 @@ public interface ClientListContract {
 
     interface Model {
         interface OnLoadClientsListener {
-            void onLoadClientsSuccess(List<Client> clientList);
+            void onLoadClientsSuccess(ArrayList<Client> clientList);
             void onLoadClientsError(String message);
         }
         void loadClients(OnLoadClientsListener listener);
     }
 
     interface View {
-        void listClients(List<Client> clientList);
+        void listClients(ArrayList<Client> clientList);
         void showErrorMessage(String message);
         void showSuccessMessage(String message);
     }

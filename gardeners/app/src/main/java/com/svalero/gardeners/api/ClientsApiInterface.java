@@ -2,6 +2,7 @@ package com.svalero.gardeners.api;
 
 import com.svalero.gardeners.domain.Client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -12,13 +13,13 @@ import retrofit2.http.Path;
 
 public interface ClientsApiInterface {
 
-    @GET("aoi/v1/clients")
-    Call<List<Client>> getClients();
+    @GET("clients")
+    Call<ArrayList<Client>> getClients();
 
-    @GET("api/v1/clients/{id}")
+    @GET("clients/{id}")
     Call<Client> getClient(@Path("id") int id);
 
-    @POST("users/{userId}/clients")
+    @POST("clients")
     Call<Client> addClient(@Path("userId") long userId, @Body Client client);
 
 }

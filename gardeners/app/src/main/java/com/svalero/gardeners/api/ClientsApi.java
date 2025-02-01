@@ -7,14 +7,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ClientsApi {
+    private static final String URL = "http://172.17.21.31:8080/api/v1/";
     public static ClientsApiInterface buildInstance() {
 
         Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd")
+                //.setDateFormat("yyyy-MM-dd")
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080")
+                .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

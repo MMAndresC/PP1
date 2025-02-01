@@ -4,6 +4,7 @@ import com.svalero.gardeners.contract.ClientListContract;
 import com.svalero.gardeners.domain.Client;
 import com.svalero.gardeners.model.ClientListModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientListPresenter implements ClientListContract.Presenter, ClientListContract.Model.OnLoadClientsListener {
@@ -24,7 +25,7 @@ public class ClientListPresenter implements ClientListContract.Presenter, Client
 
 
     @Override
-    public void onLoadClientsSuccess(List<Client> clientList) {
+    public void onLoadClientsSuccess(ArrayList<Client> clientList) {
         view.listClients(clientList);
 
     }

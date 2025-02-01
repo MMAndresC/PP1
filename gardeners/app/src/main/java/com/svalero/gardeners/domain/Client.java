@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Client implements Parcelable {
 
@@ -14,12 +15,13 @@ public class Client implements Parcelable {
     private String phone;
     private String address;
     private int gardenSize;
-    private LocalDate contractEnd;
+    private String contractEnd;
     private boolean vip;
     private double latitude;
     private double longitude;
+    private List<String>  services;
 
-    public Client(long id, String name, String phone, String address, int gardenSize, LocalDate contractEnd, boolean vip, double latitude, double longitude) {
+    public Client(long id, String name, String phone, String address, int gardenSize, String contractEnd, boolean vip, double latitude, double longitude, List<String> services) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -29,6 +31,7 @@ public class Client implements Parcelable {
         this.vip = vip;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.services = services;
     }
 
     protected Client(Parcel in) {
@@ -102,11 +105,11 @@ public class Client implements Parcelable {
         this.gardenSize = gardenSize;
     }
 
-    public LocalDate getContractEnd() {
+    public String getContractEnd() {
         return contractEnd;
     }
 
-    public void setContractEnd(LocalDate contractEnd) {
+    public void setContractEnd(String contractEnd) {
         this.contractEnd = contractEnd;
     }
 
