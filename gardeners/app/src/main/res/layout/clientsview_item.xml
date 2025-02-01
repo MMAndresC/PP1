@@ -19,8 +19,8 @@
             android:layout_width="143dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@mipmap/ic_launcher_foreground"
-            tools:srcCompat="@mipmap/ic_launcher_foreground" />
+            app:srcCompat="@mipmap/red_marker"
+            tools:srcCompat="@mipmap/red_marker" />
 
         <LinearLayout
             android:layout_width="match_parent"
