@@ -7,10 +7,14 @@ import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.*;
 import java.util.Random;
+import javafx.embed.swing.SwingFXUtils;
 
 public class ImageTask extends Task<Void> {
     private final int TOTAL_IMAGES = 3;
@@ -41,9 +45,13 @@ public class ImageTask extends Task<Void> {
                 byte[] imageBytes = response.body();
 
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imageBytes);
-                showImage(byteArrayInputStream);
+                BufferedImage bufferedImage = toGrayScale(byteArrayInputStream);
+                if(bufferedImage == null)
+                    throw new Exception("Error changing image format");
+                showImage(bufferedImage);
             } else {
-                System.out.println("Error al obtener la imagen: " + response.statusCode());
+                System.out.println("Error getting image: " + response.statusCode());
+                throw new Exception("Error getting image");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,18 +60,37 @@ public class ImageTask extends Task<Void> {
         return null;
     }
 
-    private void showImage(ByteArrayInputStream byteArrayInputStream){
-        Image image = new Image(byteArrayInputStream,
-                900,
-                500,
-                true,
-                true
-        );
-        ImageView imageView = new ImageView(image);
+    private BufferedImage toGrayScale(ByteArrayInputStream byteArrayInputStream) throws IOException {
+        try {
+            BufferedImage image = ImageIO.read(byteArrayInputStream);
+            int width = image.getWidth();
+            int height = image.getHeight();
+            for (int i = 0; i < width; i++) {
+                for (int j = 0; j < height; j++) {
 
-        imageView.setFitWidth(900);
-        imageView.setFitHeight(500);
+                    int[] rgb = image.getRaster().getPixel(i, j, new int[3]);
 
+                    int red = rgb[0];
+                    int green = rgb[1];
+                    int blue = rgb[2];
+
+                    int avg = (red + green + blue) / 3;
+
+                    int[] newRgb = { avg, avg, avg };
+
+                    image.getRaster().setPixel(i, j, newRgb);
+                }
+            }
+            return image;
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    private void showImage(BufferedImage bufferedImage){
+        ImageView imageView = createImageViewFromBufferedImage(bufferedImage, 900, 500);
+        System.out.println(imageView);
         Tab imageTab = new Tab("Image");
         imageTab.setClosable(true);
 
@@ -76,5 +103,16 @@ public class ImageTask extends Task<Void> {
                 e.printStackTrace();
             }
         });
+    }
+
+    public ImageView createImageViewFromBufferedImage(BufferedImage bufferedImage, int width, int height){
+        ImageView imageView = new ImageView();
+        Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+        imageView.setImage(image);
+        imageView.setFitWidth(width);
+        imageView.setFitHeight(height);
+        imageView.setPreserveRatio(true);
+        imageView.setSmooth(true);
+        return imageView;
     }
 }
