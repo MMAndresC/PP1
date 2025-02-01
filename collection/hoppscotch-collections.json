@@ -1,0 +1,297 @@
+[
+  {
+    "v": 3,
+    "name": "API",
+    "folders": [
+      {
+        "v": 3,
+        "name": "Clients",
+        "folders": [],
+        "requests": [
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/clients/1",
+            "name": "Get by Id client",
+            "params": [],
+            "headers": [],
+            "method": "GET",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": []
+          },
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/clients",
+            "name": "Get all clients",
+            "params": [],
+            "headers": [],
+            "method": "GET",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": []
+          },
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/clients/2",
+            "name": "Delete by id client",
+            "params": [],
+            "headers": [],
+            "method": "DELETE",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": []
+          },
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/clients",
+            "name": "Add  client",
+            "params": [],
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "active": true,
+                "description": ""
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"name\": \"aasd\",\n  \"phone\": \"654321889\",\n  \"address\": \"sdas\",\n  \"gardenSize\": 12,\n  \"contractEnd\": \"2025-12-02\",\n  \"vip\": false,\n  \"latitude\": 12.0,\n  \"longitude\": 15.0\n}"
+            },
+            "requestVariables": []
+          },
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/clients/2",
+            "name": "Modify client",
+            "params": [],
+            "headers": [],
+            "method": "PUT",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"name\": \"holi\",\n  \"phone\": \"654321889\",\n  \"address\": \"la luna\",\n  \"gardenSize\": 50,\n  \"contractEnd\": \"2025-02-02\",\n  \"vip\": false,\n  \"latitude\": 12.0,\n  \"longitude\": 15.0\n}"
+            },
+            "requestVariables": []
+          }
+        ],
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": []
+      },
+      {
+        "v": 3,
+        "name": "Gardeners",
+        "folders": [],
+        "requests": [
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/gardeners",
+            "name": "Get all gardeners",
+            "params": [],
+            "headers": [],
+            "method": "GET",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": []
+          },
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/gardeners/1",
+            "name": "Get by id gardener",
+            "params": [],
+            "headers": [],
+            "method": "GET",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": []
+          },
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/gardeners/5",
+            "name": "Delete by id gardener",
+            "params": [],
+            "headers": [],
+            "method": "DELETE",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": []
+          },
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/gardeners",
+            "name": "Add gardener",
+            "params": [],
+            "headers": [],
+            "method": "POST",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"name\": \"Pedrito\",\n  \"phone\": \"654321889\",\n  \"address\": \"Saturno\",\n  \"hireDate\": \"2025-12-02\",\n  \"selfEmployed\": false,\n  \"licensePlate\": \"H9578LK\"\n}"
+            },
+            "requestVariables": []
+          },
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/gardeners/1",
+            "name": "Modify gardener",
+            "params": [],
+            "headers": [],
+            "method": "PUT",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"name\": \"Peter\",\n  \"phone\": \"654321889\",\n  \"address\": \"Saturno\",\n  \"hireDate\": \"2025-12-02\",\n  \"selfEmployed\": false,\n  \"licensePlate\": \"H9578LK\"\n}"
+            },
+            "requestVariables": []
+          }
+        ],
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": []
+      },
+      {
+        "v": 3,
+        "name": "Services",
+        "folders": [],
+        "requests": [
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/services",
+            "name": "Get all services",
+            "params": [],
+            "headers": [],
+            "method": "GET",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": []
+          }
+        ],
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": []
+      },
+      {
+        "v": 3,
+        "name": "Images",
+        "folders": [],
+        "requests": [
+          {
+            "v": "7",
+            "endpoint": "http://localhost:8080/api/v1/images/1",
+            "name": "Get image",
+            "params": [],
+            "headers": [],
+            "method": "GET",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": []
+          }
+        ],
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": []
+      }
+    ],
+    "requests": [],
+    "auth": {
+      "authType": "none",
+      "authActive": true
+    },
+    "headers": []
+  }
+]
