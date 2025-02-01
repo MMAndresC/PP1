@@ -20,8 +20,7 @@ require_once "controllers/GardenerController.php";
     <img class="d-block mx-auto mb-4" src="includes/logo.JPG" alt="" width="72" height="57">
     <h1 class="display-5 fw-bold">Garden APP</h1>
 <br>
-    <p class="lead mb-4">Esta es la APP más guay que hay de clientes contentos con jardineros molones.</p>
-    <p class="lead mb-4">Esta es la APP más guay que hay de clientes contentos con jardineros molones EN INGLES.</p>
+    <p class="lead mb-4">Registration of clients and employees, planning and follow up of contracted services</p>
 
 <br>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">

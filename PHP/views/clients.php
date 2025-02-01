@@ -11,20 +11,20 @@ if (!is_array($clients)) {
 ?>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Listado de Clientes</h2>
+    <h2 class="mb-4">Clients List</h2>
 
     <?php if (empty($clients)): ?>
-        <p class="text-danger">No se pudieron cargar los clientes. Verifica la conexión con la API.</p>
+        <p class="text-danger">Error loading clients. Test API connection</p>
     <?php else: ?>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
-                <th>Tamaño del Jardín</th>
-                <th>Fin de Contrato</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Garden size</th>
+                <th>Contract end</th>
                 <th>VIP</th>
             </tr>
             </thead>
