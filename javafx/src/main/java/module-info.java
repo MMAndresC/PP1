@@ -7,6 +7,8 @@ module com.svalero.javafx {
     requires java.net.http;
     requires javafx.base;
     requires com.google.gson;
+    requires java.desktop;
+    requires javafx.swing;
     opens com.svalero.javafx.models to javafx.base, com.google.gson;
 
     exports com.svalero.javafx.models;
