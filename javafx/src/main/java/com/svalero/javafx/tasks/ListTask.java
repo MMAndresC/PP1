@@ -26,6 +26,8 @@ public class ListTask extends Task<Void> {
     private final String entity;
     private final TabPane tabPane;
 
+    private final String BASE_URL = "http://localhost:8080/api/v1/";
+
     public ListTask(String entity, TabPane tab){
         this.entity = entity;
         this.tabPane = tab;
@@ -35,7 +37,7 @@ public class ListTask extends Task<Void> {
     protected Void call() throws Exception{
         try (HttpClient httpClient = HttpClient.newHttpClient()) {
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8080/" + this.entity ))
+                    .uri(URI.create( BASE_URL + this.entity ))
                     .GET()
                     .build();
             httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())

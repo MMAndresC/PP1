@@ -1,5 +1,6 @@
 package com.svalero.javafx.controllers;
 
+import com.svalero.javafx.tasks.ImageTask;
 import com.svalero.javafx.tasks.ListTask;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -49,6 +50,37 @@ public class MainController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText("Notificacion");
             alert.setContentText("Listing cancelled");
+            alert.show();
+        });
+    }
+
+    @FXML
+    protected void onSelectRandomImage() {
+        ImageTask imageTask = new ImageTask(container);
+        controlImageTask(imageTask);
+        Thread thread = new Thread(imageTask);
+        //Close thread if app exit
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    private void controlImageTask(ImageTask task){
+        task.setOnSucceeded(event -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Notificacion");
+            alert.setContentText("Image completed");
+            alert.show();
+        });
+        task.setOnFailed(event -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Notificacion");
+            alert.setContentText("Error loading image");
+            alert.show();
+        });
+        task.setOnCancelled(event -> {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Notificacion");
+            alert.setContentText("Image cancelled");
             alert.show();
         });
     }

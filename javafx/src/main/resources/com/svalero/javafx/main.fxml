@@ -11,6 +11,7 @@
          <children>
             <Button fx:id="clientsBtn" mnemonicParsing="false" onAction="#onSelectList" text="List Clients" />
             <Button fx:id="gardenersBtn" mnemonicParsing="false" onAction="#onSelectList" text="List Gardeners" />
+            <Button mnemonicParsing="false" onAction="#onSelectRandomImage" text="Random Image" />
          </children>
       </HBox>
       <TabPane fx:id="container" prefHeight="514.0" prefWidth="947.0" tabClosingPolicy="UNAVAILABLE" />
