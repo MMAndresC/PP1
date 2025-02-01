@@ -1,0 +1,301 @@
+openapi: 3.0.0
+info:
+  title: API de Gestión de un servicio de jardinería
+  description: API para gestionar clientes, jardineros, servicios e imágenes.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Servidor local para desarrollo
+paths:
+  /clients:
+    get:
+      summary: Obtener todos los clientes
+      operationId: getAllClients
+      tags:
+        - Client
+      responses:
+        '200':
+          description: Lista de todos los clientes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+    post:
+      summary: Crear un nuevo cliente
+      operationId: addClient
+      tags:
+        - Client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientDto'
+      responses:
+        '201':
+          description: Cliente creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        
+  /clients/{id}:
+    get:
+      summary: Obtener un cliente por ID
+      operationId: getClientById
+      tags:
+        - Client
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del cliente
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Cliente encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '404':
+          description: Cliente no encontrado
+    put:
+      summary: Actualizar un cliente por ID
+      operationId: updateClient
+      tags:
+        - Client
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del cliente
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientDto'
+      responses:
+        '200':
+          description: Cliente actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '404':
+          description: Cliente no encontrado
+    delete:
+      summary: Eliminar un cliente por ID
+      operationId: deleteClient
+      tags:
+        - Client
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del cliente
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Cliente eliminado
+        '404':
+          description: Cliente no encontrado
+  
+  /gardeners:
+    get:
+      summary: Obtener todos los jardineros
+      operationId: getAllGardeners
+      tags:
+        - Gardener
+      responses:
+        '200':
+          description: Lista de todos los jardineros
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Gardener'
+    post:
+      summary: Crear un nuevo jardinero
+      operationId: addGardener
+      tags:
+        - Gardener
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GardenerDto'
+      responses:
+        '201':
+          description: Jardinero creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gardener'
+        
+  /gardeners/{id}:
+    get:
+      summary: Obtener un jardinero por ID
+      operationId: getGardenerById
+      tags:
+        - Gardener
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del jardinero
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Jardinero encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gardener'
+        '404':
+          description: Jardinero no encontrado
+    put:
+      summary: Actualizar un jardinero por ID
+      operationId: updateGardener
+      tags:
+        - Gardener
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del jardinero
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GardenerDto'
+      responses:
+        '200':
+          description: Jardinero actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gardener'
+        '404':
+          description: Jardinero no encontrado
+    delete:
+      summary: Eliminar un jardinero por ID
+      operationId: deleteGardener
+      tags:
+        - Gardener
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del jardinero
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Jardinero eliminado
+        '404':
+          description: Jardinero no encontrado
+
+  /images/{id}:
+    get:
+      summary: Obtener una imagen por ID
+      operationId: getImageById
+      tags:
+        - Image
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la imagen
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Imagen encontrada
+          content:
+            image/jpeg: {}
+        '404':
+          description: Imagen no encontrada
+
+  /services:
+    get:
+      summary: Obtener todos los servicios
+      operationId: getAllServices
+      tags:
+        - Service
+      responses:
+        '200':
+          description: Lista de todos los servicios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+
+components:
+  schemas:
+    Client:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+    ClientDto:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+    Gardener:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        specialization:
+          type: string
+    GardenerDto:
+      type: object
+      properties:
+        name:
+          type: string
+        specialization:
+          type: string
+    Service:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string

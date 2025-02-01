@@ -11,18 +11,18 @@ if (!is_array($gardeners)) {
 ?>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Listado de Gardeners</h2>
+    <h2 class="mb-4">Gardeners List</h2>
 
     <?php if (empty($gardeners)): ?>
-        <p class="text-danger">No se pudieron cargar los gardeners. Verifica la conexión con la API.</p>
+        <p class="text-danger">Error loading gardeners. Test API connection.</p>
     <?php else: ?>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
                 <th>Hire Date</th>
                 <th>License Plate</th>
                 <th>Self employed</th>
