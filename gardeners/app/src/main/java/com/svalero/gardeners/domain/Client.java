@@ -41,6 +41,14 @@ public class Client implements Parcelable {
         longitude = in.readDouble();
     }
 
+    public Client(String name, String phone, int gardenSize, double longitude, double latitude) {
+        this.name = name;
+        this.phone = phone;
+        this.gardenSize = gardenSize;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
     public static final Creator<Client> CREATOR = new Creator<Client>() {
         @Override
         public Client createFromParcel(Parcel in) {

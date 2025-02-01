@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.svalero.gardeners.DetailActivityView;
+import com.svalero.gardeners.view.DetailActivityView;
 import com.svalero.gardeners.R;
 import com.svalero.gardeners.domain.Client;
 

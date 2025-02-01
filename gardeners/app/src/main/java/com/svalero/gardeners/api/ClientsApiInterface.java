@@ -12,10 +12,10 @@ import retrofit2.http.Path;
 
 public interface ClientsApiInterface {
 
-    @GET("clients")
+    @GET("aoi/v1/clients")
     Call<List<Client>> getClients();
 
-    @GET("clients/{id}")
+    @GET("api/v1/clients/{id}")
     Call<Client> getClient(@Path("id") int id);
 
     @POST("users/{userId}/clients")
